@@ -2,7 +2,7 @@ n, m = list(map(int, input().split(' ')))
 
 x, y, direction = list(map(int, input().split(' ')))
 
-result = 1
+result = 0
 map_list = []
 
 for _ in range(m):
@@ -10,7 +10,7 @@ for _ in range(m):
 
 direction_map = {
     0: (0, -1),
-    1: (1, 0 ),
+    1: (1, 0),
     2: (0, 1),
     3: (-1, 0),
 }
@@ -37,11 +37,16 @@ while True:
         direction = next_direction(direction)
     
     if stop:
-        break
+        direction = next_direction(direction)
+        new_x = x - direction_map[direction][0]
+        new_y = y - direction_map[direction][1]
 
-    map_list[x][y] = 1
+    map_list[x][y] = 2
     result += 1
     x = new_x
     y = new_y
+
+    if stop:
+        break
 
 print(result)
