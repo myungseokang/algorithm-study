@@ -36,14 +36,13 @@ def dijkstra(start):
 
 dijkstra(C)
 
-total_time = 0
+time = 0
 city_count = 0
 for dist in distance:
     # 못 가는 곳이랑 자기 자신 제외
-    if dist != INF and dist != 0:
+    if dist != INF:
         city_count += 1
-        total_time += dist
+        time = max(time, dist)
 
-
-print(distance)
-print(city_count, total_time)
+print(distance[1:])
+print(city_count, time)
